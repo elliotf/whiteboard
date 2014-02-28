@@ -1,6 +1,6 @@
 function register(app) {
   app.get('/', function(req, res, next){
-    res.send('ok');
+    res.render('lohp');
   });
 };
 
