@@ -11,5 +11,8 @@
   "dependencies": {
     "bookshelf": "~0.6.4",
     "express": "~3.4.8"
+  },
+  "scripts": {
+    "test": "make test"
   }
 }
