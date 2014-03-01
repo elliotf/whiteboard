@@ -1,10 +1,10 @@
 var helper  = require('../../support/spec_helper')
-  , app     = require('../../app')
   , request = require('supertest')
   , expect  = require('chai').expect
+  , app     = helper.app
 ;
 
-describe("Landing page", function() {
+describe("Main routes", function() {
   describe("GET /", function() {
     context("when not logged in", function() {
       it("returns 200", function(done) {
