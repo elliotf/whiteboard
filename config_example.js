@@ -1,4 +1,4 @@
-var dot = require('dot-component')
+var path = require('path')
 ;
 
 var config = {
@@ -14,9 +14,10 @@ var config = {
   }
   , database: {
     client: 'sqlite3'
+    , connection: {
+      filename: path.join(__dirname, 'dev.sqlite')
+    }
   }
 };
 
-module.exports = function(key) {
-  return dot.get(config, key);
-};
+module.exports = config;

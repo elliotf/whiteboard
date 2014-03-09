@@ -5,7 +5,7 @@ var Bookshelf = require('bookshelf')
 
 db
   = Bookshelf.boardBookshelf
-  = Bookshelf.initialize(config('database'));
+  = Bookshelf.initialize(config.database);
 
 module.exports = db;
 
