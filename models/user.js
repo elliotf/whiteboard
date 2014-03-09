@@ -5,4 +5,6 @@ var db = require('./base')
 User = db.Model.extend({
 });
 
-module.exports = User;
+module.exports = {
+  User: User
+}

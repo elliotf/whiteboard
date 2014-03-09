@@ -1,6 +1,7 @@
 var helper = require('../../support/spec_helper')
   , expect = require('chai').expect
-  , User   = require('../../models/user')
+  , models = require('../../models')
+  , User   = models.User
 ;
 
 describe("User model", function() {
