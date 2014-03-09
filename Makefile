@@ -12,6 +12,6 @@ test:
 	bash -c "time ./node_modules/.bin/mocha --check-leaks --recursive -R list" # use bash for human-readable timing
 
 testwatch:
-	./node_modules/.bin/chicken -c 'clear; date; make test' .
+	./node_modules/.bin/chicken -c 'make test' .
 
 .PHONY: install clean package test testwatch
