@@ -3,6 +3,7 @@ var db = require('./base')
 ;
 
 User = db.Model.extend({
+  tableName: 'users'
 });
 
 module.exports = {

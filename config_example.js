@@ -20,4 +20,13 @@ var config = {
   }
 };
 
+if (process.env.NODE_ENV === 'test') {
+  config.database = {
+    client: 'sqlite3'
+    , connection: {
+      filename: ":memory:"
+    }
+  }
+}
+
 module.exports = config;

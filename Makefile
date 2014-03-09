@@ -11,7 +11,7 @@ release:
 	npm shrinkwrap
 
 test:
-	bash -c "time ./node_modules/.bin/mocha --check-leaks --recursive -R list" # use bash for human-readable timing
+	bash -c "export NODE_ENV='test'; time ./node_modules/.bin/mocha --check-leaks --recursive -R list" # use bash for human-readable timing
 
 testwatch:
 	./node_modules/.bin/chicken -c 'make test' .

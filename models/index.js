@@ -1,3 +1,4 @@
 module.exports = {
-  User: require('./user').User
+  db:     require('./base')
+  , User: require('./user').User
 };
