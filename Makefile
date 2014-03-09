@@ -4,7 +4,9 @@ install:
 clean:
 	rm -rf node_modules
 
-package: install
+release:
+	npm prune
+	npm install --no-shrinkwrap
 	npm dedupe
 	npm shrinkwrap
 
@@ -14,4 +16,4 @@ test:
 testwatch:
 	./node_modules/.bin/chicken -c 'make test' .
 
-.PHONY: install clean package test testwatch
+.PHONY: install clean release test testwatch
