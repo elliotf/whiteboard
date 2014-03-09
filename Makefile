@@ -1,10 +1,17 @@
-supper: test
-	bash -c "time git push origin master" # use bash for human-readable timing
+install:
+	npm install
+
+clean:
+	rm -rf node_modules
+
+package: install
+	npm dedupe
+	npm shrinkwrap
 
 test:
-	 ./node_modules/.bin/mocha --check-leaks --recursive -R list
+	bash -c "time ./node_modules/.bin/mocha --check-leaks --recursive -R list" # use bash for human-readable timing
 
 testwatch:
-	./node_modules/.bin/chicken -c 'clear; date; time make test' .
+	./node_modules/.bin/chicken -c 'clear; date; make test' .
 
-.PHONY: dev supper test testwatch
+.PHONY: install clean package test testwatch
