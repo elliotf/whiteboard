@@ -10,7 +10,7 @@ app = express();
 
 app.configure(function() {
   app.set('view engine', 'jade');
-  app.use(express.cookieParser(process.env.APP_SECRET || config('app.secret')));
+  app.use(express.cookieParser(process.env.APP_SECRET || config.app.secret));
 
   var day = 86400 * 1000;
   app.use(express.cookieSession({
