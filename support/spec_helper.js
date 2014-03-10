@@ -5,6 +5,8 @@ var chai    = require('chai')
   , knex    = require('knex')
   , config  = require('../config')
   , models  = require('../models')
+  , _       = require('lodash')
+  , async   = require('async')
 ;
 
 chai.Assertion.includeStack = true;
@@ -22,5 +24,18 @@ before(function(done) {
   });
 });
 
-beforeEach(function() {
+beforeEach(function(done) {
+  var toClear = _.extend({}, models);
+
+  delete toClear['db'];
+
+  var todo = [];
+
+  _.each(toClear, function(model, key){
+    todo.push(function(done){
+      model.forge().query().where('1', '=', '1').del().exec(done);
+    });
+  });
+
+  async.parallel(todo, done);
 });

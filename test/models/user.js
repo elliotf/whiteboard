@@ -31,4 +31,15 @@ describe("User model", function() {
       done();
     });
   });
+
+  it("gets its db cleared between runs", function(done) {
+    User
+      .forge()
+      .fetch()
+      .then(function(user){
+        expect(user).to.not.exist;
+        done();
+      })
+      .catch(done);
+  });
 });
