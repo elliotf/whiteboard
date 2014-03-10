@@ -1,12 +1,14 @@
 var passport = require('passport')
+  , User     = require('../models').User
 ;
 
 module.exports = function(app) {
   passport.serializeUser(function(user, done) {
-    done(null, 'userid')
+    done(null, user.id);
   });
-  passport.deserializeUser(function(user, done) {
-    done(null, {id: 'userid', user: 'a user'});
+
+  passport.deserializeUser(function(id, done) {
+    User.forge({id: id}).fetch().exec(done);
   });
 
   app.use(passport.initialize());

@@ -1,6 +1,7 @@
 var passport       = require('passport')
   , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
   , config         = require('../../config')
+  , User           = require('../../models').User
 ;
 
 function register(app) {
@@ -17,7 +18,7 @@ function register(app) {
         , callbackURL: callbackUrl
       }
       , function(accessToken, refreshToken, profile, done) {
-        done(null, {userid: 'userid', user: 'a user'});
+        User.findOrCreateFromOAUTH(profile, done);
       }
     )
   );
