@@ -5,6 +5,7 @@ var db      = require('./base')
 
 User = db.Model.extend({
   tableName: 'users'
+  , hasTimestamps: ['created_at', 'updated_at']
 }, {
   findOrCreateFromOAUTH: function(input, cb) {
     var data = {

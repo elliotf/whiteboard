@@ -5,31 +5,50 @@ var helper = require('../../support/spec_helper')
 ;
 
 describe("User model", function() {
+  beforeEach(function() {
+    this.basic_attrs = {
+      email: 'e@example.com'
+      , oauth_provider: 'firetaco oauth'
+      , oauth_id: 'an oauth id'
+    };
+  });
+
   it("can be instantiated", function() {
     var user = User.forge();
   });
 
   it("can be saved", function(done) {
-    var user = User.forge({
-      email: 'e@example.com'
-      , oauth_provider: 'firetaco oauth'
-      , oauth_id: 'an oauth id'
-    })
+    User
+      .forge(this.basic_attrs)
+      .save()
+      .exec(function(err, user){
+        expect(err).to.not.exist;
 
-    user.save().exec(function(err,user){
-      expect(err).to.not.exist;
+        user = user.toJSON();
 
-      expect(user.id).to.be.a('number');
+        expect(user.id).to.equal(1);
+        expect(user.email).to.equal('e@example.com');
+        expect(user.oauth_provider).to.equal('firetaco oauth');
+        expect(user.oauth_id).to.equal('an oauth id');
 
-      expect(user.toJSON()).to.deep.equal({
-        id: 1
-        , email: 'e@example.com'
-        , oauth_provider: 'firetaco oauth'
-        , oauth_id: 'an oauth id'
+        done();
       });
+  });
 
-      done();
-    });
+  it("has auto-generated timestamps", function(done) {
+    User
+      .forge(this.basic_attrs)
+      .save()
+      .exec(function(err,user){
+        expect(err).to.not.exist;
+
+        user = user.toJSON();
+
+        expect(user.created_at).to.be.a('date');
+        expect(user.updated_at).to.be.a('date');
+
+        done();
+      });
   });
 
   describe(".findOrCreateFromOAUTH", function() {
