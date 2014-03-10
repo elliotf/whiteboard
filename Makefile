@@ -4,6 +4,9 @@ install:
 clean:
 	rm -rf node_modules
 
+dev:
+	./node_modules/.bin/nodemon -w . server.js
+
 release:
 	npm prune
 	npm install --no-shrinkwrap
@@ -16,4 +19,4 @@ test:
 testwatch:
 	./node_modules/.bin/chicken -c 'make test' .
 
-.PHONY: install clean release test testwatch
+.PHONY: install clean dev release test testwatch
