@@ -1,7 +1,7 @@
 var db      = require('./base')
   , _       = require('lodash')
   , User    = require('./user').User
-  , page
+  , Page
 ;
 
 Page = db.Model.extend({
