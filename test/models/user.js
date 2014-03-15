@@ -26,7 +26,7 @@ describe("User model", function() {
 
         user = user.toJSON();
 
-        expect(user.id).to.equal(1);
+        expect(user.id).to.be.a('number');
         expect(user.email).to.equal('e@example.com');
         expect(user.oauth_provider).to.equal('firetaco oauth');
         expect(user.oauth_id).to.equal('an oauth id');
