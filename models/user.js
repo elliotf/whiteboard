@@ -1,5 +1,5 @@
-var db      = require('./base')
-  , _       = require('lodash')
+var db    = require('./base')
+  , _     = require('lodash')
   , Page  = require('./page').Page
   , User
 ;
