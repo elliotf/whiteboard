@@ -8,7 +8,7 @@ function register(app) {
   var secret      = process.env.GOOGLE_OAUTH_SECRET || config.auth.google.secret;
   var clientId    = process.env.GOOGLE_OAUTH_ID     || config.auth.google.id;
   var callbackUrl = process.env.GOOGLE_OAUTH_FQDN   || config.auth.google.fqdn;
-  callbackUrl = callbackUrl + '/auth/google/callback'
+  callbackUrl = callbackUrl + '/auth/google/callback';
 
   passport.use(
     new GoogleStrategy(
@@ -52,6 +52,6 @@ function register(app) {
       );
     });
   });
-};
+}
 
 module.exports = register;

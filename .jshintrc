@@ -1,0 +1,8 @@
+{
+  "undef":      true
+  , "laxbreak": true
+  , "laxcomma": true
+  , "node":     true
+  , "predef":   [
+  ]
+}

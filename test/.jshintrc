@@ -1,0 +1,15 @@
+{
+  "undef":      true
+  , "laxbreak": true
+  , "laxcomma": true
+  , "node":     true
+  , "expr":     true
+  , "predef":   [
+    "afterEach"
+    , "before"
+    , "beforeEach"
+    , "context"
+    , "describe"
+    , "it"
+  ]
+}

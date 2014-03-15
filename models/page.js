@@ -14,4 +14,4 @@ Page = db.Model.extend({
 
 module.exports = {
   Page: Page
-}
+};

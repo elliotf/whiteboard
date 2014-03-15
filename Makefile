@@ -7,13 +7,16 @@ clean:
 dev:
 	./node_modules/.bin/nodemon -w . server.js
 
-release:
+lint:
+	bash -c "time ./node_modules/.bin/jshint . --exclude node_modules"
+
+release: lint
 	npm prune
 	npm install --no-shrinkwrap
 	npm dedupe
 	npm shrinkwrap
 
-test:
+test: lint
 	bash -c "export NODE_ENV='test'; time ./node_modules/.bin/mocha --check-leaks --recursive -R list" # use bash for human-readable timing
 
 testwatch:

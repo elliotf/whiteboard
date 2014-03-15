@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'test') {
     , connection: {
       filename: ":memory:"
     }
-  }
+  };
 }
 
 module.exports = config;

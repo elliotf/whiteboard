@@ -83,7 +83,7 @@ describe("User model", function() {
             expect(User.prototype.save).to.not.have.been.called;
             expect(user.get('email')).to.equal('focfo@example.com');
             done();
-          })
+          });
       });
     });
 

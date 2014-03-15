@@ -16,6 +16,7 @@ require('mocha-sinon'); // to allow for this.sinon in tests
 exports.$   = cheerio.load;
 exports.app = app;
 
+/* global before */
 before(function(done) {
   models.db.knex.migrate.latest(config.database).then(function() {
     done();
@@ -24,10 +25,11 @@ before(function(done) {
   });
 });
 
+/* global beforeEach */
 beforeEach(function(done) {
   var toClear = _.extend({}, models);
 
-  delete toClear['db'];
+  delete toClear.db;
 
   var todo = [];
 
