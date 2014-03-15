@@ -111,4 +111,17 @@ describe("User model", function() {
       })
       .catch(done);
   });
+
+  it("is cleaned up between tests", function(done) {
+    User
+      .collection()
+      .fetch()
+      .exec(function(err, users){
+        expect(err).to.not.exist;
+
+        expect(users).to.have.length(0);
+
+        done();
+      });
+  });
 });
