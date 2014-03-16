@@ -29,6 +29,8 @@ before(function(done) {
 beforeEach(function(done) {
   var toClear = _.extend({}, models);
 
+  this.ns = {};
+
   delete toClear.db;
 
   var todo = [];

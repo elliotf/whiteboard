@@ -8,7 +8,7 @@ var helper = require('../../support/spec_helper')
 
 describe("User model", function() {
   beforeEach(function() {
-    this.basic_attrs = {
+    this.ns.basic_attrs = {
       email: 'e@example.com'
       , oauth_provider: 'firetaco oauth'
       , oauth_id: 'an oauth id'
@@ -21,7 +21,7 @@ describe("User model", function() {
 
   it("can be saved", function(done) {
     User
-      .forge(this.basic_attrs)
+      .forge(this.ns.basic_attrs)
       .save()
       .exec(function(err, user){
         expect(err).to.not.exist;
@@ -39,7 +39,7 @@ describe("User model", function() {
 
   it("has auto-generated timestamps", function(done) {
     User
-      .forge(this.basic_attrs)
+      .forge(this.ns.basic_attrs)
       .save()
       .exec(function(err,user){
         expect(err).to.not.exist;
@@ -132,7 +132,7 @@ describe("User model", function() {
       var self = this;
 
       User
-        .forge(self.basic_attrs)
+        .forge(self.ns.basic_attrs)
         .save()
         .exec(function(err, user){
           self.user = user;

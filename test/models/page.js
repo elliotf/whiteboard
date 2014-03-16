@@ -7,7 +7,7 @@ var helper = require('../../support/spec_helper')
 
 describe("Page model", function() {
   beforeEach(function() {
-    this.basic_attrs = {
+    this.ns.basic_attrs = {
       content: "page content"
     };
 
@@ -24,7 +24,7 @@ describe("Page model", function() {
 
   it("can be saved", function(done) {
     Page
-      .forge(this.basic_attrs)
+      .forge(this.ns.basic_attrs)
       .save()
       .exec(function(err, page){
         expect(err).to.not.exist;
@@ -52,10 +52,10 @@ describe("Page model", function() {
     });
 
     it(".belongsTo(User)", function(done) {
-      this.basic_attrs.user_id = this.user.id;
+      this.ns.basic_attrs.user_id = this.user.id;
 
       Page
-        .forge(this.basic_attrs)
+        .forge(this.ns.basic_attrs)
         .save()
         .exec(function(err, page){
           expect(err).to.not.exist;
