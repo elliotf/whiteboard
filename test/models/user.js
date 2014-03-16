@@ -147,6 +147,7 @@ describe("User model", function() {
       this.user
         .related('pages')
         .create({
+          content: 'some content'
         })
         .exec(function(err, page){
           expect(err).to.not.exist;
