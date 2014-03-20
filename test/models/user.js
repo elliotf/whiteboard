@@ -129,7 +129,7 @@ describe("User model", function() {
 
   describe("relations", function() {
     it(".hasMany(Page)", function() {
-      expect(User).to.haveMany(Page);
+      expect(User).to.haveMany(Page, 'pages');
     });
   });
 });

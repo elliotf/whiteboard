@@ -30,10 +30,10 @@ describe("Page model", function() {
       .exec(function(err, page){
         expect(err).to.not.exist;
 
-        expect(page.toJSON()).to.eql({
-          content: 'page content'
-          , user_id: 7
-        });
+        var data = page.toJSON();
+
+        expect(data.content).to.equal('page content');
+        expect(data.user_id).to.equal(7);
 
         done();
       });
