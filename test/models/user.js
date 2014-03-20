@@ -128,34 +128,8 @@ describe("User model", function() {
   });
 
   describe("relations", function() {
-    beforeEach(function(done) {
-      var self = this;
-
-      User
-        .forge(self.ns.basic_attrs)
-        .save()
-        .exec(function(err, user){
-          self.user = user;
-
-          done(err);
-        });
-    });
-
-    it(".hasMany(Page)", function(done) {
-      var self = this;
-
-      this.user
-        .related('pages')
-        .create({
-          content: 'some content'
-        })
-        .exec(function(err, page){
-          expect(err).to.not.exist;
-
-          expect(page.get('user_id')).to.equal(self.user.id);
-
-          done();
-        });
+    it(".hasMany(Page)", function() {
+      expect(User).to.haveMany(Page);
     });
   });
 });

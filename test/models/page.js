@@ -9,6 +9,7 @@ describe("Page model", function() {
   beforeEach(function() {
     this.ns.basic_attrs = {
       content: "page content"
+      , user_id: 7
     };
 
     this.user_attrs = {
@@ -29,40 +30,18 @@ describe("Page model", function() {
       .exec(function(err, page){
         expect(err).to.not.exist;
 
-        expect(page.get('content')).to.equal('page content');
+        expect(page.toJSON()).to.eql({
+          content: 'page content'
+          , user_id: 7
+        });
 
         done();
       });
   });
 
   describe("relations", function() {
-    beforeEach(function(done) {
-      var self = this;
-
-      User
-        .forge(this.user_attrs)
-        .save()
-        .exec(function(err, user){
-          expect(err).to.not.exist;
-
-          self.user = user;
-
-          done();
-        });
-    });
-
-    it(".belongsTo(User)", function(done) {
-      this.ns.basic_attrs.user_id = this.user.id;
-
-      Page
-        .forge(this.ns.basic_attrs)
-        .save()
-        .exec(function(err, page){
-          expect(err).to.not.exist;
-
-          done();
-        });
+    it(".belongsTo(User)", function() {
+      expect(Page).to.belongTo(User);
     });
   });
 });
-

@@ -3,9 +3,8 @@ var Bookshelf = require('bookshelf')
   , db
 ;
 
-db
-  = Bookshelf.boardBookshelf
-  = Bookshelf.initialize(config.database);
+db = Bookshelf.initialize(config.database);
+db.plugin('registry');
 
 module.exports = db;
 

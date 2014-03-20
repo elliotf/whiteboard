@@ -9,7 +9,8 @@
     "supertest": "~0.9.0",
     "cheerio": "~0.13.1",
     "nodemon": "^1.0.15",
-    "jshint": "^2.4.4"
+    "jshint": "^2.4.4",
+    "chai-bookshelf": "^1.0.0"
   },
   "dependencies": {
     "bookshelf": "~0.6.4",

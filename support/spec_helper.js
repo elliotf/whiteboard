@@ -11,6 +11,7 @@ var chai    = require('chai')
 
 chai.Assertion.includeStack = true;
 chai.use(require('sinon-chai')); // spy assertions
+chai.use(require('chai-bookshelf'));
 require('mocha-sinon'); // to allow for this.sinon in tests
 
 exports.$   = cheerio.load;
